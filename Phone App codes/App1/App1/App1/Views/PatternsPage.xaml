@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1.PatternsPage"
+             xmlns:commtools="http://xamarin.com/schemas/2020/toolkit" 
+             xmlns:viewModels="clr-namespace:App1">
+
+    <!--ContentPage.BindingContext>
+        <viewModels:PatternsPage/>
+    </ContentPage.BindingContext-->
+    
+    <ContentPage.Content>
+        
+        
+
+        <Grid CascadeInputTransparent="True">
+            <Image Aspect="AspectFill"
+                   Source="bg.png"
+                   TranslationY="-60"/>
+                   <!--VerticalOptions="Start"-->
+
+            <ScrollView HeightRequest="3000">
+
+            <StackLayout Padding="5,0,5,0">
+
+                <Label Text="Patterns"
+                   FontSize="80"
+                   TextColor="DarkGoldenrod"
+                   FontAttributes="Italic"
+                   HorizontalTextAlignment="Center"
+                   Padding="0,100,0,20"/>
+                <Label Text="If you want to set the clock to display a static pattern, you can chooce to do so here."
+                   TextColor="Gray"
+                   FontSize="20"
+                   HorizontalTextAlignment="Center"
+                   Padding="45,0,45,60"/>
+
+                <Grid x:Name="grid" 
+                    Padding="5"
+                  WidthRequest="450">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="150"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Pattern 1: -->
+                    <Image Grid.Column="0" 
+                           Grid.Row="0"
+                           Margin="10"
+                       Source="pointMiddle_.png"/>
+                    <Button x:Name="but1" 
+                        Grid.Column="1" 
+                        Grid.Row="0"
+                        Text="Use" 
+                        FontAttributes="Bold"
+                        TextColor="{Binding But1Color}"
+                        BackgroundColor="DarkGoldenrod"
+                        Padding="0" 
+                        CornerRadius="20"
+                        VerticalOptions="Center"
+                        Command="{Binding SetShape1Command}"/>
+
+                    <!-- Pattern 2: -->
+                    <Image Grid.Column="0" 
+                           Grid.Row="1"
+                           Margin="10"
+                       Source="waves_.png"/>
+                    <Button x:Name="but2" 
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Text="Use" 
+                        FontAttributes="Bold"
+                        TextColor="{Binding But2Color}"
+                        Padding="0" 
+                        CornerRadius="20"
+                        VerticalOptions="Center"
+                        BackgroundColor="DarkGoldenrod"
+                        Command="{Binding SetShape2Command}"/>
+
+                    <!-- Pattern 3: -->
+                    <Image Grid.Column="0" 
+                           Grid.Row="2"
+                           Margin="10"
+                       Source="pointDown.png"/>
+                    <Button x:Name="but3" 
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Text="Use" 
+                        FontAttributes="Bold"
+                        TextColor="{Binding But3Color}"
+                        Padding="0" 
+                        CornerRadius="20"
+                        VerticalOptions="Center"
+                        BackgroundColor="DarkGoldenrod"
+                        Command="{Binding SetShape3Command}"/>
+                </Grid>
+            </StackLayout>
+            </ScrollView>
+        </Grid>
+
+        
+    </ContentPage.Content>
+</ContentPage>

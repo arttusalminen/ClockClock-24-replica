@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# Own stuff
+arduino_secrets.h
+
 # User-specific files
 *.rsuser
 *.suo

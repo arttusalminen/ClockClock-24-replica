@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:viewModels="clr-namespace:App1"
+             x:Class="App1.SettingsPage">
+    <!--ContentPage.BindingContext>
+        <viewModels:SettingsPage/>
+    </ContentPage.BindingContext-->
+
+    <ContentPage.Content>
+        <Grid CascadeInputTransparent="True">
+            <Image Aspect="AspectFill"
+                   Source="bg_2.png"
+                   TranslationY="-60"/>
+            <ScrollView HeightRequest="3600" HorizontalScrollBarVisibility="Always">
+                <StackLayout Padding="0,0,0,0">
+                    <!--<StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Start">
+                        <ContentView Padding="0,0,0,20" VerticalOptions="FillAndExpand">
+                            <Image Source="Artboard_2.png" VerticalOptions="Fill" HeightRequest="170" />
+                        </ContentView>
+                    </StackLayout>-->
+                    <StackLayout Padding="40,90,40,0" VerticalOptions="End">
+                        <Label Text="Settings" FontSize="80" 
+                               FontAttributes="Italic" HorizontalTextAlignment="Center" 
+                               TextColor="DarkGoldenrod"/>
+                    
+                        <Label Text="IP Address of the clock" FontSize="18" 
+                               HorizontalTextAlignment="Center" Padding="0,70,0,0"
+                               TextColor="Gray"/>
+                        <Label Text="{Binding CurrentIP}" FontSize="12" Padding="0,0,0,0" 
+                               HorizontalTextAlignment="Center" TextColor="Gray"/>
+                        <Entry x:Name="ipField" Margin="0,0,0,0" 
+                           TextColor="Gray" CharacterSpacing="5" 
+                           HorizontalTextAlignment="Center" FontSize="Large"
+                           Placeholder="IP Address" PlaceholderColor="LightGray"
+                           Text="{Binding EntryIPValue}"/>
+                        <Button x:Name="ipButton"
+                            Text="Set IP"
+                            Command="{Binding IPCommand}"
+                            Margin="100,10,100,10"
+                            CornerRadius="25"
+                            BackgroundColor="DarkGoldenrod"
+                            TextColor="White" FontSize="20" />
+
+
+                        <Grid HorizontalOptions="CenterAndExpand" Padding="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="150"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="120"/>
+                                <RowDefinition Height="120"/>
+                                <RowDefinition Height="100"/>
+                                <RowDefinition Height="80"/>
+                            </Grid.RowDefinitions>
+
+                            <Rectangle Grid.Column="0" 
+                                       Grid.ColumnSpan="2" 
+                                       Fill="Gray"
+                                       Opacity="0.1"
+                                       RadiusX="40" RadiusY="40"
+                                       Margin="0,15,0,15"/>
+
+                            
+                            <Button x:Name="Sync" 
+                            Grid.Column="1" 
+                            Grid.Row="0"
+                            Text="Sync hand movements" 
+                            TextColor="{Binding SyncColor}"
+                            Padding="0" 
+                            VerticalOptions="Center"
+                            BackgroundColor="DarkGoldenrod"
+                            Margin="10,0,10,0"
+                            CornerRadius="25"
+                            Command="{Binding SyncCommand}"/>
+                            <Button x:Name="UnSync" 
+                            Grid.Column="0" 
+                            Grid.Row="0"
+                            Text="Natural hand movements"
+                            TextColor="{Binding UnSyncColor}"
+                            Padding="0" 
+                            VerticalOptions="Center"
+                            BackgroundColor="DarkGoldenrod"
+                            Margin="10,0,10,0"
+                            CornerRadius="25"
+                            Command="{Binding UnSyncCommand}"/>
+
+
+                            <Rectangle Grid.Column="0" 
+                                       Grid.Row="1"
+                                       Grid.ColumnSpan="2" 
+                                       Grid.RowSpan="2"
+                                       Fill="Gray"
+                                       Opacity="0.1"
+                                       RadiusX="40" RadiusY="40"
+                                       Margin="0,5,0,5"/>
+
+                            <Rectangle Grid.Column="0" 
+                                       Grid.Row="1"
+                                       Grid.ColumnSpan="2" 
+                                       Fill="Gray"
+                                       Opacity="0.1"
+                                       RadiusX="40" RadiusY="40"
+                                       Margin="10,15,10,15"/>
+
+
+
+                            <Button x:Name="Gradual" 
+                            Grid.Column="0" 
+                            Grid.Row="1"
+                            Text="Gradual mode" 
+                            TextColor="{Binding GradualColor}"
+                            Padding="0,0,0,0"
+                            VerticalOptions="Center"
+                            BackgroundColor="DarkGoldenrod"
+                            Margin="25,0,5,0"
+                            CornerRadius="25"
+                            Command="{Binding GradualCommand}"/>
+                            <Button x:Name="Simultaneous" 
+                            Grid.Column="1" 
+                            Grid.Row="1"
+                            Text="Simultaneous mode"
+                            TextColor="{Binding SimultaneousColor}"
+                            BackgroundColor="DarkGoldenrod"
+                            Margin="5,-10,25,-10"
+                            Padding="0,0"
+                            CornerRadius="25"
+                            VerticalOptions="Center"
+                            Command="{Binding SimultaneousCommand}"/>
+
+
+                            <Entry x:Name="GradualInterval" Margin="20,20,0,20" 
+                            TranslationY="-20"
+                            TranslationX="-5"
+                            Grid.Column="0" 
+                            Grid.Row="2"
+                            TextColor="Gray" CharacterSpacing="5" 
+                            HorizontalTextAlignment="Center" FontSize="Large"
+                            Placeholder="Interval" PlaceholderColor="LightGray"
+                            Text="{Binding EntryGradualInterval}"/>
+                            <Button x:Name="intervalButton"
+                            TranslationY="-15"
+                            TranslationX="-5"
+                            Grid.Column="1" 
+                            Grid.Row="2"
+                            Text="Set gradual mode interval"
+                            Command="{Binding GradualIntervalCommand}"
+                            Margin="5,20,5,20"
+                            CornerRadius="25"
+                            BackgroundColor="DarkGoldenrod"
+                            TextColor="{Binding GradualIntervalButColor}" 
+                            FontSize="15"/>
+
+
+                            <Entry x:Name="ExtraLaps" Margin="20,15,0,15" 
+                            Grid.Column="0" 
+                            Grid.Row="3"
+                            TextColor="Gray" CharacterSpacing="5" 
+                            HorizontalTextAlignment="Center" FontSize="Large"
+                            Placeholder="Laps" PlaceholderColor="LightGray"
+                            Text="{Binding LapsEntry}"/>
+                            <Button x:Name="LapsButton"
+                                    TranslationY="0"
+                            Grid.Column="1" 
+                            Grid.Row="3"
+                            Margin="0,10,0,10" Text="Set laps during movements"
+                            Command="{Binding LapsCommand}"
+                            CornerRadius="25"
+                            BackgroundColor="DarkGoldenrod"
+                            TextColor="{Binding LapsColor}" 
+                            FontSize="15"/>
+
+
+
+
+                        </Grid>
+
+
+                        <Label Text="Acceleration value, smaller is faster. Default value 100000." 
+                               FontSize="18" HorizontalTextAlignment="Center" Padding="0,30,0,0"
+                               TextColor="Gray"/>
+                        <Entry x:Name="acccelerationField" Margin="0,0,0,0" 
+                           TextColor="Gray" CharacterSpacing="5" 
+                           HorizontalTextAlignment="Center" FontSize="Large"
+                           Placeholder="Acceleration" PlaceholderColor="LightGray"
+                           Text="{Binding EntryAccValue}"/>
+                        <Button x:Name="accButton"
+                            Margin="0,0,0,0" Text="Set acceleration"
+                            Command="{Binding AccCommand}"
+                            BackgroundColor="DarkGoldenrod"
+                                CornerRadius="25"
+                            TextColor="{Binding AccButColor}" FontSize="20" />
+
+                        <Label Text="Min step interval (tics), smaller is faster. Default value 900." 
+                               FontSize="18" HorizontalTextAlignment="Center" Padding="0,50,0,0"
+                               TextColor="Gray"/>
+                        <Entry x:Name="stepField" Margin="0,0,0,0" 
+                           TextColor="Gray" CharacterSpacing="5" 
+                           HorizontalTextAlignment="Center" FontSize="Large"
+                           Placeholder="Step interval" PlaceholderColor="LightGray"
+                           Text="{Binding EntryStepValue}"/>
+                        <Button x:Name="stepButton"
+                            Margin="0,0,0,80" Text="Set step interval"
+                                Padding="0,0,0,0"
+                            Command="{Binding StepCommand}"
+                            BackgroundColor="DarkGoldenrod"
+                                CornerRadius="25"
+                            TextColor="{Binding StepButColor}" FontSize="20" />
+
+
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

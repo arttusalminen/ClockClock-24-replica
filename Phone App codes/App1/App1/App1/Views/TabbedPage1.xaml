@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1.TabbedPage1"
+            xmlns:local="clr-namespace:App1"
+            xmlns:views="clr-namespace:App1.Views"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            SelectedTabColor="DarkGoldenrod"
+            UnselectedTabColor="LightGray"
+            BackgroundColor="White">
+    
+  <!--Pages can be added as references or inline-->
+    
+    <local:SettingsPage Title="Settings"  IconImageSource="Settings.png" BackgroundColor="Transparent"/>
+    <local:TimePage Title="Time" IconImageSource="Time.pdg" BackgroundColor="Transparent"/>
+    <local:PatternsPage Title="Patterns"  IconImageSource="Shapes.png" BackgroundColor="Transparent"/>
+    
+</TabbedPage>
