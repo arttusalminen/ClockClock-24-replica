@@ -145,8 +145,9 @@ volatile unsigned long time_now = 0;
 
 volatile clockinfo kello;
 
-
-
+// WiFi restart timer (prevents NINA firmware hang ~2 weeks)
+unsigned long lastWiFiRestart = 0;
+const unsigned long WIFI_RESTART_INTERVAL = 24UL * 60 * 60 * 1000;  // 24 hours
 
 void sendData(int receiver, String stringToSend){
   Wire.beginTransmission(receiver);
@@ -335,6 +336,16 @@ void updateClock(){
 
   // Loop has 2 parts: wifi communication, and normal clock updating.
 void loop(){
+
+  // 24-hour WiFi restart to prevent NINA firmware hang (runs always, independent of staticShape)
+  if ((unsigned long)(millis() - lastWiFiRestart) >= WIFI_RESTART_INTERVAL) {
+    WiFi.end();
+    delay(500);
+    status = WiFi.beginAP(ssid, pass);
+    delay(500);
+    server.begin();
+    lastWiFiRestart = millis();
+  }
 
   bool timeUpdateRequested = false;
   bool parameterUpdateRequested = false;
