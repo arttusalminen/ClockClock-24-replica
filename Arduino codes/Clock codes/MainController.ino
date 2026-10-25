@@ -140,7 +140,7 @@ volatile int gradualUpdateTimeGap = 1200;
 volatile bool gradualUpdate = true;
 volatile bool inSync = false;
 
-unsigned long minute = 59905;
+unsigned long minute = 59910;
 volatile unsigned long time_now = 0;
 
 volatile clockinfo kello;
